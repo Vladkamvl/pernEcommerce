@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const sequelize = require('./db');
+const fileupload = require('express-fileupload');
 const models = require('./models/models');
 const cors = require('cors');
 const router = require('./routes');
@@ -12,6 +13,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(fileupload({}));
 app.use('/api', router);
 
 //Error handlers
